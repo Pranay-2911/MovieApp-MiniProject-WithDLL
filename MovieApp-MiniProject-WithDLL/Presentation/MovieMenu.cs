@@ -236,7 +236,7 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                     Console.WriteLine(mname.Message);
                 }
                 catch (Exception e)
-                {
+                {    
                     Console.WriteLine(e.Message);
                 }
             }
