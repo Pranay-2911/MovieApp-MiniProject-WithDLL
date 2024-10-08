@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>MovieApp_MiniProject_WithDLL</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="MovieLibrary">
+      <HintPath>..\..\..\Libary\MovieLibrary\MovieLibrary\bin\Debug\net8.0\MovieLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
