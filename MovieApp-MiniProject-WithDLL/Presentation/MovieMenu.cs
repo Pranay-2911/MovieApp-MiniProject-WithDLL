@@ -162,9 +162,7 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
 
                     if (manager.FindMovieId(id, ref index))
                     {
-                        Console.WriteLine($"Enter your rating for {manager.GetMovieByIndex(index).MovieName} Movie, Out OF FIVE !!!!!");
-                        double rating = double.Parse(Console.ReadLine());
-                        manager.RateAMovie(rating, index);
+                        RatingAMovieWithId(index);
                     }
                 }
                 catch (MovieIdDoNotExistException mId)
@@ -174,6 +172,26 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);   
+                }
+            }
+            static void RatingAMovieWithId(int index)
+            {
+                try
+                {
+                    Console.WriteLine($"Enter your rating for {manager.GetMovieByIndex(index).MovieName} Movie, Out OF FIVE !!!!!");
+                    double rating = double.Parse(Console.ReadLine());
+                    if (manager.RateAMovie(rating, index))
+                    {
+                        Console.WriteLine("Thank you for your rating");
+                    }
+                }
+                catch(InvalidRatingValueException ir)
+                {
+                    Console.WriteLine(ir.Message);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                 }
             }
 
