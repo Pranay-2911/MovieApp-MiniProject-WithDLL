@@ -11,7 +11,7 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
 {
     public class MovieMenu
     {
-        static MovieManager manager = new MovieManager();
+        static MovieManager manager = new MovieManager();  // static instance 
         public static void GetMovieMenu()
         {
             Console.WriteLine("============= Welcome To Movies App =============");
@@ -19,6 +19,7 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
 
             bool check = true;
 
+            // loop for the operartion
             while (check)
             {
                 Console.WriteLine("============== Operation ==============");
@@ -45,6 +46,7 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                 Switches(choice, ref check);
             }
 
+            //Switch case
             static void Switches(int choice, ref bool check)
             {
                 switch (choice)
@@ -151,6 +153,7 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                 }
             }
 
+            //Rating for the movie can don multiple times with different raing and it will calculate the avg of it
             static void RateMovie()
             {
 
@@ -210,6 +213,8 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                 Console.WriteLine("Saved Successfully");
             }
 
+
+            //Find the movie by Id
             static void FindMovieById()
             {
 
@@ -235,6 +240,8 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
 
             }
 
+
+            //Find Movie By Name
             static void FindMovieByName()
             {
 
@@ -259,6 +266,8 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                 }
             }
 
+
+            //Remove Movie By Id
             static void RemoveMovieById()
             {
 
@@ -283,6 +292,8 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                 }
             }
 
+
+            //Remove Movie By Name
             static void RemoveMovieByname()
             {
 
@@ -306,6 +317,7 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                 }
             }
 
+            //Edit of the movie can done only in name, genre and year
             static void EditMovie()
             {
                 try
@@ -330,6 +342,7 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                
             }
 
+            //Creating a loop for  the editing part
             static void EditOperationLoop(ref bool check, int index)
             {
                 while (check)
@@ -337,6 +350,7 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
                     EditOperation(ref check, index);
                 }
             }
+            //Edit operation
             static void EditOperation(ref bool check, int index)
             {
 
@@ -365,6 +379,8 @@ namespace MovieApp_MiniProject_WithDLL.Presentation
 
             }
 
+
+            //Editing
             static void EditName(int index)
             {
                 try
