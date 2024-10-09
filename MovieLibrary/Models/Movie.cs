@@ -25,6 +25,7 @@ namespace MovieLibrary.Models
             MovieRating = 0.0;
         }
 
+        //Printing part
         public string DisplayMovie()
         {
             return $"Movie ID : {MovieId} \n" +

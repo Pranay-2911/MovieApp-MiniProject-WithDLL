@@ -29,6 +29,7 @@ namespace MovieLibrary.Controller
             return movies.Count;
         }
 
+        //Check weather the movies list is empty or not to print the movie
         public bool MovieDisplayCheck()
         {
             if (movies.Count > 0)
@@ -38,6 +39,7 @@ namespace MovieLibrary.Controller
             throw new MovieListEmptyException("NO Movies Found!... Please Enter the Movie");
         }
 
+        //Cheack movie list size, to deside we can add movie or not 
         public bool MovieSizeCheckToADD()
         {
             if (movies.Count < 5)
@@ -60,11 +62,18 @@ namespace MovieLibrary.Controller
         }
 
 
-        public void RateAMovie(double rating, int index)
+        //Check the rating given buy user is correct or not
+        public bool RateAMovie(double rating, int index)
         {
-            movies[index].MovieVote++;
-            movies[index].MovieSumRating += rating;
-            movies[index].MovieRating = movies[index].MovieSumRating / movies[index].MovieVote;
+            if(rating <=5)
+            {
+                movies[index].MovieVote++;
+                movies[index].MovieSumRating += rating;
+                movies[index].MovieRating = movies[index].MovieSumRating / movies[index].MovieVote;
+                return true;
+            }
+            throw new InvalidRatingValueException("Please Enter The Rating Less Than '5' To  Rate a Movie");
+           
         }
 
         // Add a movie
@@ -80,6 +89,7 @@ namespace MovieLibrary.Controller
             Serializer.SerializeMovies(movies); // Serialize after clearing
         }
 
+        //Find the movie by id and return true if exist and also give the index of the list
         public bool FindMovieId(int id, ref int index)
         {
             int i = 0;
@@ -97,6 +107,7 @@ namespace MovieLibrary.Controller
             throw new MovieIdDoNotExistException($"The Movie for ID :{id} Does not Exist");
         }
 
+        //Find the movie by name and return true if exist and also give the index of the list
         public bool FindMovieByName(string name, ref int index)
         {
             int i = 0;
@@ -113,6 +124,9 @@ namespace MovieLibrary.Controller
             }
             throw new MovieNameDoNotExistException($"The :{name} Does not Exist");
         }
+
+
+        //Check if the id is already exist or not to add the movies
         public bool MovieIdExist(int id)
         {
             int i = 0;
@@ -130,6 +144,7 @@ namespace MovieLibrary.Controller
             return false;
 
         }
+        // Remove Movie by its index
         public void RemoveMovieByIndex(int index)
         {
             movies.RemoveAt(index);
@@ -138,11 +153,8 @@ namespace MovieLibrary.Controller
         {
             return movies[index];
         }
-        public void EditId(int index, int id)
-        {
-            movies[index].MovieId = id;
-        }
 
+        // Edit part
         public void EditName(int index, string name)
         {
             movies[index].MovieName = name;
